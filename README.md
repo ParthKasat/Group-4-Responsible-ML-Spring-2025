@@ -7,7 +7,7 @@
 **Model Date**: 5/4/2025  
 **Model Version**: 1.0  
 **License**: Apache License, version 2.0  
-**Model implementation code**: [DNSC_6301_Group Project - Group 4.ipynb](https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025/blob/main/DNSC_6301_Group%20Project%20-%20Group%204.ipynb)
+**Model implementation code**: [DNSC_6301_Group Project - Group 4.ipynb](https://colab.research.google.com/drive/1MVRKWiOjqXC3my-fu-PPiSBPm2Cj6Xdo?usp=sharing)
 
 ---
 
