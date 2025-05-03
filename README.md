@@ -1,4 +1,4 @@
-# ✈️ Group 4 – Responsible ML Model Card
+# Group 4 – Responsible ML Model Card
 ## Basic Information
 **Course**: DNSC 6301 – Responsible Machine Learning  
 **Institution**: George Washington University  
