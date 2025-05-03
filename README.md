@@ -3,11 +3,11 @@
 **Course**: DNSC 6301 – Responsible Machine Learning  
 **Institution**: George Washington University  
 **Semester**: Spring 2025  
-**Team Members**: Parth Kasat (parthkasat@gmail.com), Zixiao He (hzx200004@gmail.com)
-**Model Date**: 5/4/2025
-**Model Version**: 1.0
-**License**: MIT
-**Model implementation code**: DNSC_6301_Example_Project.ipynb
+**Team Members**: Parth Kasat (parthkasat@gmail.com), Zixiao He (hzx200004@gmail.com)  
+**Model Date**: 5/4/2025  
+**Model Version**: 1.0  
+**License**: MIT  
+**Model implementation code**: [DNSC_6301_Group Project - Group 4.ipynb]([https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025/blob/main/DNSC_6301_Group%20Project%20-%20Group%204.ipynb](https://colab.research.google.com/drive/1MVRKWiOjqXC3my-fu-PPiSBPm2Cj6Xdo?usp=sharing))
 
 ---
 
