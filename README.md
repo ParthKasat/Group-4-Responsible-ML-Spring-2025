@@ -137,8 +137,8 @@ The model **should not be used for**:
 
 ## 🔗 References
 
-- **Training Data and Evaluation Data**: [HMDA Data]([[assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip)](https://github.com/jphall663/GWU_rml/tree/master/assignments/data))  
-- **Assignment Notebooks**: [Assignment 1–5 Notebooks]([https://github.com/your-group-repo](https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025))  
+- **Training Data and Evaluation Data**: [HMDA Data]([https://github.com/jphall663/GWU_rml/tree/master/assignments/data]) 
+- **Assignment Notebooks**: [Assignment 1–5 Notebooks]([https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025])  
 
 
 ---
