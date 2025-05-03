@@ -95,8 +95,8 @@
 
 ## 🔗 References
 
-- **Training Data**: [HMDA Training Data]([assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip))
-- **Evaluation Data**: [HMDA Evaluation Data]([https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_test_preprocessed.zip))
+- **Training Data and Evaluation Data**: [HMDA Data]([[assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip)](https://github.com/jphall663/GWU_rml/tree/master/assignments/data))
+
 
 ---
 
