@@ -58,17 +58,38 @@ The model **should not be used for**:
 
 ## ⚙️ Model Details
 
-- **Input Features**: ``,``Engineered and preprocessed features excluding leakage columns.
+- **Input Features**:  
+  ```python
+  [
+    "property_value_std",
+    "no_intro_rate_period_std",
+    "loan_amount_std",
+    "income_std",
+    "conforming",
+    "intro_rate_period_std",
+    "debt_to_income_ratio_std",
+    "term_360"
+  ]
 - **Target Variable**: `high_priced` (1 = high-priced loan)
 - **Model Type**: Explainable Boosting Machine (EBM)
 - **Software**: interpret v0.2.7, scikit-learn v1.1.1
 - **Hyperparameters**:
-  - `max_bins`: 256
-  - `n_estimators`: 100
-  - `learning_rate`: 0.1
-  - `max_depth`: 6
-  - `subsample`: 0.8
-  - `colsample_bytree`: 0.8
+  ```python
+  {
+    "max_bins": 128,
+    "max_interaction_bins": 16,
+    "interactions": 10,
+    "outer_bags": 8,
+    "inner_bags": 4,
+    "learning_rate": 0.01,
+    "validation_size": 0.25,
+    "min_samples_leaf": 1,
+    "max_leaves": 3,
+    "n_jobs": 4,
+    "early_stopping_rounds": 100,
+    "random_state": 12345
+  }
+
 
 ---
 
@@ -81,12 +102,24 @@ The model **should not be used for**:
 | Test         | 0.834 | 0.89        | 0.93         |
 
 ### Plots
+- 📈 Best Model Feature Importance: ![image](https://github.com/user-attachments/assets/a8571bf8-ae9c-4a14-b810-64550a0a8d67)
 
-- 📈 Global Feature Importance (Assignment 2)
-- 📈 Partial Dependence: `loan_amount`, `interest_rate`, `race_black`, `sex_female`
-- 📉 AIR vs Threshold plots (Assignment 3 & 4)
-- 🔍 Fairness vs Performance tradeoff heatmaps (Assignment 5)
-- 🧪 Stress Test under Recession Conditions (Assignment 5)
+- 📈 Global Feature Importance: ![image](https://github.com/user-attachments/assets/dc0b123f-18dc-4202-b702-8bc63f24b437)
+
+- 📈 Partial Dependence: ![image](https://github.com/user-attachments/assets/dac3d835-0c68-4a66-9058-c5461131fb90)
+![image](https://github.com/user-attachments/assets/a55d2b7d-637a-4541-a517-3db432a57053)
+![image](https://github.com/user-attachments/assets/6ecee0a6-6bfb-48c1-a2b8-874c5a62a400)
+![image](https://github.com/user-attachments/assets/5df602a8-e14a-4219-9492-09a8ea813ec7)
+![image](https://github.com/user-attachments/assets/425bc1b1-5600-4c74-8df3-31cc2724a440)
+![image](https://github.com/user-attachments/assets/aca6be7b-16c2-4810-921c-71af16d8bc13)
+![image](https://github.com/user-attachments/assets/eb1fd4b8-6e36-4116-8ca9-ecc4ab9602a2)
+![image](https://github.com/user-attachments/assets/0b496420-d419-43de-86c4-1c7701f1face)
+![image](https://github.com/user-attachments/assets/835515f6-f1cf-4f9f-b2d7-033ef2b5bbce)
+![image](https://github.com/user-attachments/assets/c1377113-43e9-4a14-8d00-bbfb855ac22d)
+
+- 📉 Stolen  Model: ![image](https://github.com/user-attachments/assets/91725331-c174-4694-8735-3b7336533c87)
+
+- 🔍 Global Logross Residuals: ![image](https://github.com/user-attachments/assets/a98bb427-61c1-4dcd-b0ae-48989d5f1133)
 
 ### Alternative Models Considered
 
