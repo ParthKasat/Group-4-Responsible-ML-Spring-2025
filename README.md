@@ -13,31 +13,10 @@
 
 ## 📌 Intended Use
 
-- **Purpose**: To predict aircraft fuel usage and operational costs for regional airports, facilitating efficient resource allocation and environmental impact assessments.
-- **Primary Users**: Airport operations managers, environmental analysts, and aviation policy makers.
-- **Scope**: Designed for small to mid-sized regional airports within the United States.
-- **Out-of-Scope**: Not intended for international airports or military aviation operations.
-
----
-
-## 🧠 Model Details
-
-- **Model Type**: Gradient Boosting Regressor (XGBoost)
-- **Framework**: XGBoost 1.7.5, Python 3.10
-- **Hyperparameters**:
-  - `n_estimators`: 100
-  - `learning_rate`: 0.1
-  - `max_depth`: 6
-  - `subsample`: 0.8
-  - `colsample_bytree`: 0.8
-- **Input Features**:
-  - Flight date
-  - Aircraft type
-  - Number of seats
-  - Flight distance
-  - Fuel type
-  - Flight frequency
-- **Target Variable**: Fuel usage in kilograms
+- **Purpose**: 
+- **Primary Users**: 
+- **Scope**: 
+- **Out-of-Scope**: 
 
 ---
 
@@ -64,6 +43,27 @@
 
 ---
 
+## 🧠 Model Details
+
+- **Model Type**: Gradient Boosting Regressor (XGBoost)
+- **Framework**: XGBoost 1.7.5, Python 3.10
+- **Hyperparameters**:
+  - `n_estimators`: 100
+  - `learning_rate`: 0.1
+  - `max_depth`: 6
+  - `subsample`: 0.8
+  - `colsample_bytree`: 0.8
+- **Input Features**:
+  - Flight date
+  - Aircraft type
+  - Number of seats
+  - Flight distance
+  - Fuel type
+  - Flight frequency
+- **Target Variable**: Fuel usage in kilograms
+
+---
+
 ## 📈 Quantitative Analysis
 
 - **Metrics**:
@@ -87,23 +87,16 @@
 ## ⚖️ Ethical Considerations
 
 - **Bias & Fairness**:
-  - Evaluated performance across aircraft types to ensure fairness
-  - No significant disparities observed
 - **Environmental Impact**:
-  - Helps identify high fuel-consuming routes for potential optimization
 - **Limitations**:
-  - Does not account for real-time factors (e.g., weather, ATC delays)
-  - Relies on potentially noisy or incomplete public datasets
 - **Uncertainties**:
-  - Aircraft metadata mismatches may impact predictions
-  - Assumptions on fuel type-to-weight conversions may vary
 
 ---
 
 ## 🔗 References
 
-- **Training Data**: [FAA Flight Logs](https://www.faa.gov/data_research/aviation_data_statistics/)
-- **Evaluation Data**: [Silent Falcon Dataset](https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025)
+- **Training Data**: [HMDA Training Data]([assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip))
+- **Evaluation Data**: [HMDA Evaluation Data]([https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_test_preprocessed.zip))
 
 ---
 
