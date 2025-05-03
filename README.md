@@ -13,10 +13,26 @@
 
 ## 📌 Intended Use
 
-- **Purpose**: 
-- **Primary Users**: 
-- **Scope**: 
-- **Out-of-Scope**: 
+### 🔹 Business Value
+Our remediated EBM model enables responsible and equitable assessment of mortgage loan pricing. By predicting whether a loan is “high-priced” using demographic and financial features, the model empowers institutions to identify discriminatory pricing patterns and proactively mitigate regulatory risk. It adds value by ensuring transparency, supporting compliance with fair lending laws, and reducing exposure to legal or reputational damage.
+
+### 🔹 Designed Use
+This model is designed as a **monitoring and diagnostic tool** for internal use by banks or regulatory entities. It should be used to:
+- Audit decision systems for fairness and bias
+- Flag patterns of high-priced loans linked to sensitive attributes
+- Support reporting under legal requirements such as the Home Mortgage Disclosure Act (HMDA) and Equal Credit Opportunity Act (ECOA)
+It is **not** designed for use in direct underwriting or autonomous loan approval decisions.
+
+### 🔹 Intended Users
+- Data scientists and ML engineers at financial institutions
+- Compliance officers and risk managers
+- Regulatory auditors reviewing mortgage pricing practices
+
+### 🔹 Additional Use Limitations
+The model **should not be used for**:
+- Final lending decisions without human review
+- Consumer-facing tools or interfaces
+- Applications involving populations or economic conditions that were not represented in the training data
 
 ---
 
@@ -84,18 +100,45 @@
 
 ---
 
-## ⚖️ Ethical Considerations
+## ⚠️ Ethical Considerations
 
-- **Bias & Fairness**:
-- **Environmental Impact**:
-- **Limitations**:
-- **Uncertainties**:
+### 🔹 Potential Negative Impacts
+
+**Math/Software Risks**:
+- Model performance may degrade over time due to data drift.
+- Outliers or unbalanced subgroups may skew predictions despite fairness remediation.
+- Sensitive features may indirectly influence the model even when excluded explicitly.
+
+**Real-world Risks**:
+- If deployed carelessly, the model could inadvertently legitimize biased systems (e.g., reinforcing historical disparities).
+- Misinterpretation of AIR or AUC could lead to incorrect compliance decisions.
+- Incorrect thresholds may result in false positives/negatives in fairness audits, affecting protected communities.
+
+### 🔹 Uncertainties
+
+**Math/Software Risks**:
+- Fairness metrics such as AIR are sensitive to sample size and prevalence.
+- The model's generalizability outside of the training domain (e.g., different years or regions) is untested.
+- Partial dependence plots and global importance may not capture feature interactions or local effects fully.
+
+**Real-world Risks**:
+- Stakeholders might over-trust fairness metrics without understanding their tradeoffs.
+- Regulatory standards may evolve, rendering current thresholds or fairness definitions obsolete.
+- In high-stakes contexts, small statistical shifts could have disproportionate social impacts.
+
+### 🔹 Unexpected Results
+
+- PDPs showed sensitivity to `sex_female`
+- Recession simulations exposed AUC drop, leading to further model tuning
+- AIR values varied considerably by race depending on threshold selection, indicating sensitivity in fairness optimization
+
 
 ---
 
 ## 🔗 References
 
-- **Training Data and Evaluation Data**: [HMDA Data]([[assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip)](https://github.com/jphall663/GWU_rml/tree/master/assignments/data))
+- **Training Data and Evaluation Data**: [HMDA Data]([[assignments/data/hmda_train_preprocessed.zip](https://github.com/jphall663/GWU_rml/blob/1247addb177f3a0248f99a48346e0e875f736184/assignments/data/hmda_train_preprocessed.zip)](https://github.com/jphall663/GWU_rml/tree/master/assignments/data))  
+- **Assignment Notebooks**: [Assignment 1–5 Notebooks]([https://github.com/your-group-repo](https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025))  
 
 
 ---
