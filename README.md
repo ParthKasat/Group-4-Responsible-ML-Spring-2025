@@ -73,23 +73,7 @@ The model **should not be used for**:
 - **Target Variable**: `high_priced` (1 = high-priced loan)
 - **Model Type**: Explainable Boosting Machine (EBM)
 - **Software**: interpret v0.2.7, scikit-learn v1.1.1
-- **Hyperparameters**:
-  ```python
-  {
-    "max_bins": 128,
-    "max_interaction_bins": 16,
-    "interactions": 10,
-    "outer_bags": 8,
-    "inner_bags": 4,
-    "learning_rate": 0.01,
-    "validation_size": 0.25,
-    "min_samples_leaf": 1,
-    "max_leaves": 3,
-    "n_jobs": 4,
-    "early_stopping_rounds": 100,
-    "random_state": 12345
-  }
-
+- **Hyperparameters**:![image](https://github.com/user-attachments/assets/063d1f22-89a4-4fac-9c2f-35bb113e39b4)
 
 ---
 
