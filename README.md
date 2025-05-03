@@ -38,65 +38,62 @@ The model **should not be used for**:
 
 ## 🧪 Training Data
 
-- **Source**: FAA flight logs and Silent Falcon project datasets
-- **Size**: ~10,000 records
-- **Split**:
-  - Training set: 70%
-  - Validation set: 15%
-  - Test set: 15%
-- **Preprocessing**:
-  - Missing value imputation using mean for numerical features
-  - One-hot encoding for categorical variables
-  - Normalization of numerical features
+- **Source**: HMDA preprocessed training dataset (see references)
+- **Split**: 70% training, 30% validation, 20% testing
+- **Rows**:
+  - Training: 112253 rows
+  - Validation: 48085 rows
+- **Data Dictionary**: 
 
 ---
 
 ## 📊 Evaluation Data
 
-- **Source**: Held-out subset from the original dataset
-- **Size**: ~1,500 records
-- **Notes**: Includes recent flight data from April 2025 to test model generalization
+- **Source**: HMDA test dataset (see references)
+- **Size**:
+  - Validation: 48085 rows
+- **Differences**: Feature columns are consistent with training set.
 
 ---
 
-## 🧠 Model Details
+## ⚙️ Model Details
 
-- **Model Type**: Gradient Boosting Regressor (XGBoost)
-- **Framework**: XGBoost 1.7.5, Python 3.10
+- **Input Features**: ``,``Engineered and preprocessed features excluding leakage columns.
+- **Target Variable**: `high_priced` (1 = high-priced loan)
+- **Model Type**: Explainable Boosting Machine (EBM)
+- **Software**: interpret v0.2.7, scikit-learn v1.1.1
 - **Hyperparameters**:
+  - `max_bins`: 256
   - `n_estimators`: 100
   - `learning_rate`: 0.1
   - `max_depth`: 6
   - `subsample`: 0.8
   - `colsample_bytree`: 0.8
-- **Input Features**:
-  - Flight date
-  - Aircraft type
-  - Number of seats
-  - Flight distance
-  - Fuel type
-  - Flight frequency
-- **Target Variable**: Fuel usage in kilograms
 
 ---
 
-## 📈 Quantitative Analysis
+## 📊 Quantitative Analysis
 
-- **Metrics**:
-  - **Mean Absolute Error (MAE)**: 12.5 kg
-  - **Root Mean Squared Error (RMSE)**: 18.3 kg
-  - **R² Score**: 0.89
-- **Alternative Models Considered**:
-  - Linear Regression (R² = 0.75)
-  - Random Forest Regressor (R² = 0.85)
-  - Support Vector Regressor (R² = 0.82)
-- **Visualizations**:
-  - Feature importance chart
-  - Partial dependence plots
-  - Residuals analysis plot
-  - Fuel usage by aircraft type
-  - Daily average expenditure chart
-  - Route distribution by distance bin
+| Dataset      | AUC   | AIR (Black) | AIR (Female) |
+|--------------|-------|-------------|--------------|
+| Training     | 0.843 | 0.91        | 0.94         |
+| Validation   | 0.837 | 0.92        | 0.96         |
+| Test         | 0.834 | 0.89        | 0.93         |
+
+### Plots
+
+- 📈 Global Feature Importance (Assignment 2)
+- 📈 Partial Dependence: `loan_amount`, `interest_rate`, `race_black`, `sex_female`
+- 📉 AIR vs Threshold plots (Assignment 3 & 4)
+- 🔍 Fairness vs Performance tradeoff heatmaps (Assignment 5)
+- 🧪 Stress Test under Recession Conditions (Assignment 5)
+
+### Alternative Models Considered
+
+- **GLM**: Comparable AUC, less interpretable.
+- **XGBoost**: Higher complexity, fairness concerns.
+- **Decision Tree**: Overfit under stress.
+- ✅ **EBM** offered best blend of performance, fairness, and interpretability.
 
 ---
 
@@ -132,14 +129,12 @@ The model **should not be used for**:
 - Recession simulations exposed AUC drop, leading to further model tuning
 - AIR values varied considerably by race depending on threshold selection, indicating sensitivity in fairness optimization
 
-
 ---
 
 ## 🔗 References
 
 - **Training Data and Evaluation Data**: [HMDA Data](https://github.com/jphall663/GWU_rml/tree/master/assignments/data) 
 - **Assignment Notebooks**: [Assignment 1–5 Notebooks](https://github.com/ParthKasat/Group-4-Responsible-ML-Spring-2025) 
-
 
 ---
 
