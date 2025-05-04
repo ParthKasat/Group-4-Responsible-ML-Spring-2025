@@ -43,7 +43,19 @@ The model **should not be used for**:
 - **Rows**:
   - Training: 112253 rows
   - Validation: 48085 rows
-- **Data Dictionary**: 
+- 📒 **Data Dictionary**: 
+
+| Name                        | Modeling Role       | Measurement Level        | Description                                                                 |
+|-----------------------------|---------------------|---------------------------|-----------------------------------------------------------------------------|
+| `property_value_std`        | Input               | Float (standardized)      | Standardized value of the property's appraised worth                        |
+| `no_intro_rate_period_std`  | Input               | Float (standardized)      | Standardized count of months without an introductory interest rate         |
+| `loan_amount_std`           | Input               | Float (standardized)      | Standardized amount of the mortgage loan requested                         |
+| `income_std`                | Input               | Float (standardized)      | Standardized reported borrower income                                       |
+| `conforming`                | Input               | Binary (0 or 1)           | Whether the loan amount conforms to GSE (e.g., Fannie Mae) limits; 1 = yes |
+| `intro_rate_period_std`     | Input               | Float (standardized)      | Standardized length of the initial interest rate period                    |
+| `debt_to_income_ratio_std`  | Input               | Float (standardized)      | Standardized ratio of debt obligations to income                           |
+| `term_360`                  | Input               | Binary (0 or 1)           | Whether loan term is 30 years (360 months); 1 = yes                        |
+| `high_priced`               | Target              | Binary (0 or 1)           | Whether the loan is classified as high-priced under federal threshold; 1 = high-priced |
 
 ---
 
@@ -79,18 +91,47 @@ The model **should not be used for**:
 
 ## 📊 Quantitative Analysis
 
-| Dataset      | AUC   | AIR (Black) | AIR (Female) |
-|--------------|-------|-------------|--------------|
-| Training     | 0.843 | 0.91        | 0.94         |
-| Validation   | 0.837 | 0.92        | 0.96         |
-| Test         | 0.834 | 0.89        | 0.93         |
+Our models were primarily evaluated using **AUC (Area Under the ROC Curve)** for predictive performance and **AIR (Adverse Impact Ratio)** to assess fairness across protected demographic groups.
+
+### 🔹 Model Performance Metrics
+
+| Dataset    | AUC    |
+|------------|--------|
+| Training   | 0.8243 |
+| Validation | 0.8145 |
+| Test       | 0.7263 |
+| **Remediated EBM** | **0.8013** |
+
+> AUC dropped slightly in the remediated EBM model due to fairness-enhancing modifications, which is an expected tradeoff in responsible ML practices.
+
+### 🔹 Fairness Assessment (Adverse Impact Ratios - AIR)
+
+| Dataset    | AIR (Black vs White) | AIR (Female vs Male) |
+|------------|----------------------|-----------------------|
+| Training   | 0.91                 | 0.94                  |
+| Validation | 0.92                 | 0.96                  |
+| Test       | 0.89                 | 0.93                  |
+
+Additional subgroup AIR comparisons:
+- **Asian vs. White**: `1.122`
+- **Black vs. White**: `0.862`
+- **Female vs. Male**: `0.950`
+
+> According to the 80% rule (AIR ≥ 0.80 is acceptable), the model demonstrates generally acceptable parity, though the **Black vs. White** AIR suggests a potential concern for disparate impact.
+
+### 🔍 Interpretation Notes
+- **Performance vs. Fairness Tradeoff**: The remediated EBM (Explainable Boosting Machine) offers slightly lower AUC but significantly improved and more stable AIR across protected attributes.
+- **Subgroup Sensitivity**: AIR for Black borrowers is consistently lower, indicating the need for further remediation or subgroup-specific analysis in production.
 
 ### Plots
-- 📈 Best Model Feature Importance: ![image](https://github.com/user-attachments/assets/a8571bf8-ae9c-4a14-b810-64550a0a8d67)
+- 📈 Best Model Feature Importance: 
+![image](https://github.com/user-attachments/assets/a8571bf8-ae9c-4a14-b810-64550a0a8d67)
 
-- 📈 Global Feature Importance: ![image](https://github.com/user-attachments/assets/dc0b123f-18dc-4202-b702-8bc63f24b437)
+- 📈 Global Feature Importance: 
+![image](https://github.com/user-attachments/assets/dc0b123f-18dc-4202-b702-8bc63f24b437)
 
-- 📈 Partial Dependence: ![image](https://github.com/user-attachments/assets/dac3d835-0c68-4a66-9058-c5461131fb90)
+- 📈 Partial Dependence: 
+![image](https://github.com/user-attachments/assets/dac3d835-0c68-4a66-9058-c5461131fb90)
 ![image](https://github.com/user-attachments/assets/a55d2b7d-637a-4541-a517-3db432a57053)
 ![image](https://github.com/user-attachments/assets/6ecee0a6-6bfb-48c1-a2b8-874c5a62a400)
 ![image](https://github.com/user-attachments/assets/5df602a8-e14a-4219-9492-09a8ea813ec7)
@@ -101,9 +142,11 @@ The model **should not be used for**:
 ![image](https://github.com/user-attachments/assets/835515f6-f1cf-4f9f-b2d7-033ef2b5bbce)
 ![image](https://github.com/user-attachments/assets/c1377113-43e9-4a14-8d00-bbfb855ac22d)
 
-- 📉 Stolen  Model: ![image](https://github.com/user-attachments/assets/91725331-c174-4694-8735-3b7336533c87)
+- 📉 Stolen  Model:   
+![image](https://github.com/user-attachments/assets/91725331-c174-4694-8735-3b7336533c87)
 
-- 🔍 Global Logross Residuals: ![image](https://github.com/user-attachments/assets/a98bb427-61c1-4dcd-b0ae-48989d5f1133)
+- 🔍 Global Logross Residuals:   
+![image](https://github.com/user-attachments/assets/a98bb427-61c1-4dcd-b0ae-48989d5f1133)
 
 ### Alternative Models Considered
 
